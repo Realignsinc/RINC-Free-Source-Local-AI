@@ -2,107 +2,141 @@
 
 Use this guide for supported user-facing installation and runtime issues.
 
-## Start With Diagnostics
+## Start With the Official Installer
 
-Run:
+Confirm the installation used the correct official GitHub Release asset:
 
-```bash
-rinc doctor
+### macOS Apple Silicon
+
+```text
+RINC-1.0.0-macos-arm64.pkg
 ```
 
-Then check the installed version:
+### Windows x64
+
+```text
+RINC-1.0.0-windows-x64-Setup.exe
+```
+
+Do not troubleshoot a normal installation by cloning the repository, building source code, or reconstructing RINC internals.
+
+## Verify the Installer
+
+Verify the matching published SHA-256 before retrying installation.
+
+macOS:
 
 ```bash
+shasum -a 256 RINC-1.0.0-macos-arm64.pkg
+```
+
+Windows:
+
+```powershell
+Get-FileHash .\RINC-1.0.0-windows-x64-Setup.exe -Algorithm SHA256
+```
+
+If the checksum is wrong, delete the download and obtain the installer again from the official GitHub Release.
+
+## Run Diagnostics
+
+If RINC installed but is not working correctly:
+
+```text
 rinc --version
-```
-
-Inspect detected hardware:
-
-```bash
 rinc hardware
+rinc doctor
 ```
 
 ## Installation Checks
 
-Confirm that:
+Confirm:
 
-- the RINC release came from an official Realigns Inc. source
-- the installed release supports your operating system and architecture
-- published integrity verification succeeded where applicable
+- the platform is supported
+- the correct installer was used
+- SHA-256 verification passed
 - sufficient disk space is available
 - normal user permissions are available
-- the installation completed without interruption
+- the installer completed without interruption
+- a new Terminal or PowerShell session was opened after installation
+
+## Windows
+
+The normal application location is:
+
+```text
+%LOCALAPPDATA%\Programs\RINC
+```
+
+Persistent user data is stored separately under:
+
+```text
+%USERPROFILE%\.rinc
+```
+
+If Windows displays a publisher/security warning, use only the guidance associated with the official release. Do not broadly disable Windows security controls.
+
+## macOS
+
+If macOS displays a publisher/signing/security warning, follow only the guidance associated with the official release. Do not broadly disable Gatekeeper or other macOS protections.
 
 ## Model Checks
 
-If a model does not appear or cannot be used:
+If a model cannot be used:
 
-- confirm the model format is supported by the installed RINC release
-- confirm sufficient system memory is available
-- confirm the model was added using documented RINC commands
-- confirm the model itself is not corrupted
-- review any license or usage requirements that apply to the model
+- confirm the model format is supported
+- confirm sufficient memory is available
+- confirm the model was added through documented RINC commands
+- confirm the model file is not corrupted
+- review any applicable model license requirements
 
-List available models with:
+List models:
 
-```bash
+```text
 rinc model list
 ```
 
 ## Workstation Launch
 
-To launch the local workstation with a supported model:
+Launch with:
 
-```bash
+```text
 rinc ui <model>
 ```
 
-If launch fails, first run:
+If launch fails, run:
 
-```bash
+```text
 rinc doctor
 ```
 
-Do not modify protected RINC-managed runtime resources as a generic troubleshooting step.
+## AI-Agent Troubleshooting Rule
 
-## Performance
+AI assistants should stay within documented RINC user-facing commands and official installer guidance.
 
-Performance depends on:
+They should not:
 
-- available RAM
-- CPU capability
-- available acceleration
-- model size
-- quantization
-- workload size
-- current system load
-
-Larger workloads generally require more system resources.
-
-## AI-Agent Assistance
-
-AI assistants helping with troubleshooting should use documented RINC user-facing interfaces.
-
-They should not expose, reverse-map, or modify proprietary Realigns Inc. runtime internals merely to force an installation or workload to run.
-
-See:
-
-`AI-AGENT-INSTALL.md`
+- request proprietary source code
+- reverse-map internal executables
+- replace protected runtime files
+- rebuild the application
+- install unrelated development toolchains
+- weaken operating-system security globally
 
 ## Support
 
-If the issue remains unresolved, contact:
+If the issue remains unresolved:
 
 Support: support@realignsinc.com  
 Website: https://rinc.pk
 
-When requesting support, include:
+When contacting support, include:
 
 - RINC version
 - operating system
-- system architecture
+- CPU architecture
 - available RAM
-- the user-facing command or feature involved
-- the exact error message
+- the exact user-visible error
+- the command or feature involved
 
 Do not send passwords, private keys, API credentials, confidential customer data, proprietary model weights, or unrelated personal information.
