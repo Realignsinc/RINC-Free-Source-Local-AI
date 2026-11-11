@@ -4,11 +4,11 @@
 
 RINC is developed and owned by **Realigns Inc.**
 
-This repository is the public **installation and release distribution page** for RINC 1.0.0.
+This repository is the official public **installer, product information, licensing, and support page** for RINC 1.0.0.
 
-**RINC proprietary source code is not distributed in this repository.**
+**RINC proprietary source code is not distributed through this repository.**
 
-## One-Link AI Installation
+## Simplest Installation — Give This Link to an AI Assistant
 
 Send this repository link to your AI assistant:
 
@@ -20,19 +20,25 @@ Then say:
 
 > Help me install RINC 1.0.0 on this computer from the official GitHub release.
 
-The AI agent should:
+The AI assistant should handle the supported installation flow step by step:
 
-1. identify whether the computer is macOS Apple Silicon or Windows x64
-2. select the correct official RINC Release installer
-3. verify the published SHA-256 checksum
-4. guide or perform the installation when authorized
-5. verify:
+1. identify the operating system and CPU architecture
+2. confirm the computer is supported
+3. open the official GitHub Release
+4. select the correct installer
+5. download it when authorized, or tell the user exactly which installer to download
+6. verify the matching SHA-256 checksum
+7. guide or perform the normal installation
+8. open a new Terminal or PowerShell window when required
+9. verify:
    ```text
    rinc --version
    rinc hardware
    rinc doctor
    ```
-6. help launch RINC
+10. help launch RINC
+
+The user should not need to clone this repository, build software, install developer tools, or understand internal RINC implementation details.
 
 ## Supported RINC 1.0.0 Platforms
 
@@ -45,14 +51,16 @@ Linux, Intel/x64 macOS, and Windows ARM are not official RINC 1.0.0 release targ
 
 Use only installer assets published under this repository's **GitHub Releases**.
 
-Preferred installer formats:
+Preferred installer assets:
 
 - macOS: `RINC-1.0.0-macos-arm64.pkg`
 - Windows: `RINC-1.0.0-windows-x64-Setup.exe`
 
-Verify published SHA-256 checksums before installation.
+Each installer should be verified against its published `.sha256` file before installation.
 
-## RINC Capabilities
+If the required installer is not present in GitHub Releases, installation is not ready and the user or AI assistant should stop rather than substitute source files, development builds, or unofficial packages.
+
+## What RINC Provides
 
 RINC provides local AI workflows including:
 
@@ -65,10 +73,6 @@ RINC provides local AI workflows including:
 - multilingual workflows
 - hardware-aware operation
 - local workstation UI
-
-Implementation source, internal runtime architecture, proprietary Engine Box logic,
-Programming Engine implementation, private build tooling, and protected runtime
-coordination are not distributed through this repository.
 
 ## Installation Documentation
 
@@ -83,8 +87,7 @@ coordination are not distributed through this repository.
 RINC is proprietary software owned by Realigns Inc.
 
 The installer may be used only under the applicable RINC license terms.
-Commercial use requires prior written authorization or an appropriate commercial
-license from Realigns Inc.
+Commercial use requires prior written authorization or an appropriate commercial license from Realigns Inc.
 
 Read:
 
