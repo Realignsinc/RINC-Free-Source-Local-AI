@@ -109,3 +109,10 @@ For installation steps, read:
 - `INSTALL.md`
 - `QUICKSTART.md`
 - `AI-AGENT-INSTALL.md`
+
+
+## Multilingual Model Selection
+
+For practical RAM-based model guidance and recommendations for Thai, Arabic, Urdu, and Roman Urdu, read:
+
+- `SYSTEM-CONFIG-MULTILINGUAL-MODELS.md`
