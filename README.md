@@ -80,6 +80,7 @@ RINC provides local AI workflows including:
 - `docs/QUICKSTART.md`
 - `docs/AI-AGENT-INSTALL.md`
 - `docs/SYSTEM-REQUIREMENTS.md`
+- `docs/SYSTEM-CONFIG-MULTILINGUAL-MODELS.md`
 - `docs/TROUBLESHOOTING.md`
 
 ## Licensing
