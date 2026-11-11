@@ -1,71 +1,89 @@
 # RINC 1.0.0 — Quick Start
 
-RINC 1.0.0 official release targets:
+RINC 1.0.0 is installed from official **GitHub Release installer files**.
+
+Supported targets:
 
 - **macOS Apple Silicon (ARM64)**
 - **Windows x64**
 
-Use only an official RINC release from Realigns Inc.
+## Easiest Method
 
-## 1. Install RINC
+Give this link to an AI assistant:
 
-### macOS Apple Silicon
+```text
+https://github.com/Realignsinc/RINC-Free-Source-Local-AI
+```
 
-1. Download the official macOS ARM64 `.pkg`.
-2. Verify its published SHA-256 checksum.
-3. Open the package and complete the normal macOS installer flow.
-4. Open a new Terminal window.
+Then say:
 
-### Windows x64
+> Help me install RINC 1.0.0 on this computer from the official GitHub release.
 
-1. Download `RINC-1.0.0-windows-x64-Setup.exe` from the official GitHub Release.
-2. Verify its published SHA-256 checksum.
-3. Run the Setup EXE and follow the installer prompts.
-4. Close and reopen Terminal or PowerShell.
+The AI assistant should use `AI-AGENT-INSTALL.md` and guide the installation step by step.
 
-The Windows ZIP remains available as an advanced/fallback package when published.
+## macOS Apple Silicon
 
-For complete instructions, read `INSTALL.md`.
+Download:
 
-## 2. Check Version
+```text
+RINC-1.0.0-macos-arm64.pkg
+RINC-1.0.0-macos-arm64.pkg.sha256
+```
+
+Verify:
+
+```bash
+shasum -a 256 RINC-1.0.0-macos-arm64.pkg
+```
+
+Then open the `.pkg` and complete the installer.
+
+## Windows x64
+
+Download:
+
+```text
+RINC-1.0.0-windows-x64-Setup.exe
+RINC-1.0.0-windows-x64-Setup.exe.sha256
+```
+
+Verify:
+
+```powershell
+Get-FileHash .\RINC-1.0.0-windows-x64-Setup.exe -Algorithm SHA256
+```
+
+Then run the Setup EXE.
+
+## Verify RINC
+
+Open a fresh Terminal or PowerShell window:
 
 ```text
 rinc --version
-```
-
-## 3. Inspect Hardware
-
-```text
 rinc hardware
-```
-
-## 4. Run Diagnostics
-
-```text
 rinc doctor
 ```
 
-Treat the installation as healthy only when the applicable diagnostic checks pass.
-
-## 5. Start RINC
+## Start RINC
 
 ```text
 rinc
 ```
 
-## 6. List Models
+List models:
 
 ```text
 rinc model list
 ```
 
-## 7. Start Local Chat
+Start local chat:
 
 ```text
 rinc chat <model>
 ```
 
-## 8. Launch the Local Workstation
+Launch the local workstation:
 
 ```text
 rinc ui <model>
@@ -73,21 +91,13 @@ rinc ui <model>
 
 ## Important
 
-Official RINC packages provide the RINC-managed local environment required for supported operation.
+Normal users should not clone the repository, build RINC from source, or install separate developer runtimes.
 
-A normal packaged installation should not require separate global installation of development runtimes such as Node.js or Python unless current official RINC documentation explicitly requires them.
+Use only official installer assets published under GitHub Releases.
 
-Do not install an unsupported build, disable operating-system security protections broadly, or modify protected RINC runtime resources merely to make an installation succeed.
+For full instructions:
 
-For licensing information, read:
-
-- `LICENSE`
-- `COMMERCIAL-LICENSE.md`
-
-For AI-assisted installation:
-
+- `INSTALL.md`
 - `AI-AGENT-INSTALL.md`
-
-For support:
-
-https://rinc.pk
+- `SYSTEM-REQUIREMENTS.md`
+- `TROUBLESHOOTING.md`
