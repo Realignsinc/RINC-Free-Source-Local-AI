@@ -1,0 +1,96 @@
+RINC COMMUNITY / PERSONAL LICENSE
+Version 1.0 — November 7, 2026
+Copyright © 2026 Realigns Inc. All rights reserved.
+Official product: RINC 1.0.0 | https://rinc.pk
+
+IMPORTANT: RINC IS SOURCE-AVAILABLE, NOT OPEN-SOURCE SOFTWARE.
+COMMERCIAL USE IS STRICTLY PROHIBITED WITHOUT PRIOR WRITTEN AUTHORIZATION
+OR A SEPARATE COMMERCIAL LICENSE FROM REALIGNS INC.
+
+1. DEFINITIONS
+"RINC Materials" means the original RINC 1.0.0 source code, binaries,
+interfaces, documentation, designs, and other materials owned or licensed
+for proprietary redistribution by Realigns Inc., excluding Third-Party
+Components governed by their own licenses.
+"Non-Commercial Use" means use exclusively for an individual's private,
+personal learning, education, hobby projects, or non-commercial research,
+without a business purpose, organizational deployment, fee, financial
+consideration, commercial advantage, or connection to paid goods or services.
+"Commercial Use" includes any direct or indirect business, professional,
+organizational, revenue-generating, or commercially advantageous use,
+regardless of whether RINC itself is sold or fees are charged for RINC.
+
+2. LIMITED COMMUNITY PERMISSION
+Subject to compliance with this license, Realigns Inc. grants each
+individual a limited, revocable, non-exclusive, non-transferable, royalty-free
+permission to download, run, inspect, and privately modify the RINC Materials
+solely for Non-Commercial Use. This permission does not transfer ownership,
+permit sublicensing, or grant trademark rights.
+
+3. STRICT PROHIBITION OF COMMERCIAL USE
+WITHOUT PRIOR EXPRESS WRITTEN AUTHORIZATION FROM REALIGNS INC., YOU MUST NOT:
+(a) use RINC for any company, employer, client, paid work, consulting,
+    agency, professional practice, or internal business operation;
+(b) operate RINC as part of paid services, SaaS, hosted offerings, APIs,
+    software products, commercial research, or commercial training;
+(c) deploy RINC for enterprises, institutions, shared laboratories,
+    commercial classrooms, or centrally managed organizations;
+(d) sell, lease, sublicense, monetize, bundle, or commercially redistribute
+    RINC or modifications or derivative works of the RINC Materials;
+(e) incorporate the RINC Materials into a commercial product or service,
+    even when RINC is not separately advertised or charged for.
+Commercial permission is effective only when granted in a separate written
+agreement executed by an authorized Realigns Inc. representative.
+An inquiry, quotation, informal message, or payment alone does not grant it.
+
+4. SOURCE ACCESS AND DISTRIBUTION
+Source availability does not grant permission to publish, redistribute,
+mirror, sublicense, or make modified or unmodified RINC Materials available
+to others, except where independently required by an applicable third-party
+license or non-waivable law. Obtain written authorization first.
+Personal modifications must remain private and non-commercial.
+
+5. OWNERSHIP AND BRANDING
+All rights not expressly granted are reserved by Realigns Inc. The RINC
+name, RINC logos, Realigns Inc. marks, visual identity, and official-release
+representation are not licensed. You may make factual, non-misleading
+references to RINC, but may not imply endorsement or label unofficial builds
+as official releases. See TRADEMARKS.md.
+
+6. THIRD-PARTY COMPONENTS
+RINC may include llama.cpp, stable-diffusion.cpp, whisper.cpp, and other
+separately licensed dependencies. Their licenses control those components;
+this license does not remove, supersede, or restrict permissions that their
+copyright holders grant directly. Retain all applicable third-party notices.
+Model weights and datasets may carry additional independent terms.
+
+7. COMPLIANCE AND TERMINATION
+Permission under this license ends if you violate its conditions. Upon
+termination, stop using and distributing RINC Materials and delete copies
+under your control, to the extent legally permitted. This does not terminate
+independent rights granted under third-party licenses.
+
+8. NO WARRANTY; LIMITATION OF LIABILITY
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, RINC MATERIALS ARE
+PROVIDED "AS IS" WITHOUT WARRANTIES, EXPRESS OR IMPLIED, INCLUDING
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT.
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, REALIGNS INC. IS NOT LIABLE FOR
+INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR EXEMPLARY DAMAGES ARISING
+FROM USE OF THE RINC MATERIALS. ANY LIMITATIONS THAT CANNOT LAWFULLY APPLY
+ARE LIMITED ONLY TO THE EXTENT PERMITTED BY LAW.
+
+9. COMMERCIAL LICENSE INQUIRIES
+Commercial use is prohibited unless separately authorized in writing.
+Contact:
+  support@realignsinc.com
+  sales@rinc.pk
+  +92 336 111 2026
+  https://rinc.pk
+
+10. SEPARATE AGREEMENTS
+A signed written commercial agreement may expressly replace or supplement
+these terms for the covered licensee and licensed scope. No other waiver or
+modification is effective unless documented in writing by Realigns Inc.
+
+This license governs the RINC Materials unless replaced or supplemented
+by a separate written agreement authorized by Realigns Inc.
