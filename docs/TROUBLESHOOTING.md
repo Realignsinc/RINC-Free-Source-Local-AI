@@ -110,6 +110,21 @@ If launch fails, run:
 rinc doctor
 ```
 
+## UI Image Generation Fails
+
+If chat works but UI image generation fails, run:
+
+```text
+rinc hardware
+rinc doctor
+```
+
+On slower CPU-only or lower-capability machines, image generation can take significantly longer than chat. A UI/job timeout does not necessarily mean the bundled image runtime or image model is broken.
+
+Use the approved terminal fallback in `WINDOWS-INSTALL-TERMINAL-IMAGE.md`.
+
+If the documented terminal command generates an image successfully, the bundled image runtime and model are functioning; the remaining problem is likely in the UI/job orchestration layer.
+
 ## AI-Agent Troubleshooting Rule
 
 AI assistants should stay within documented RINC user-facing commands and official installer guidance.
@@ -117,7 +132,7 @@ AI assistants should stay within documented RINC user-facing commands and offici
 They should not:
 
 - request proprietary source code
-- reverse-map internal executables
+- reverse-map internal executables beyond the explicitly documented terminal image fallback
 - replace protected runtime files
 - rebuild the application
 - install unrelated development toolchains
