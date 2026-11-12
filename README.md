@@ -74,6 +74,12 @@ RINC provides local AI workflows including:
 - hardware-aware operation
 - local workstation UI
 
+## Windows Terminal Image Fallback
+
+On slower CPU-only or lower-capability Windows systems, UI image generation can take longer than the UI/job timeout. RINC provides a documented terminal image-generation fallback using its bundled image runtime and bundled image model.
+
+See `docs/WINDOWS-INSTALL-TERMINAL-IMAGE.md`.
+
 ## Installation Documentation
 
 - `docs/INSTALL.md`
@@ -81,6 +87,7 @@ RINC provides local AI workflows including:
 - `docs/AI-AGENT-INSTALL.md`
 - `docs/SYSTEM-REQUIREMENTS.md`
 - `docs/SYSTEM-CONFIG-MULTILINGUAL-MODELS.md`
+- `docs/WINDOWS-INSTALL-TERMINAL-IMAGE.md`
 - `docs/TROUBLESHOOTING.md`
 
 ## Licensing
