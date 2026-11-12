@@ -234,7 +234,7 @@ A normal user installing an official RINC package should not be instructed to se
 
 unless current official RINC documentation explicitly requires something for that exact release.
 
-Use documented RINC commands, not internal implementation executables.
+Use documented RINC commands for normal operation. The explicit exception is the approved Windows terminal image fallback in `WINDOWS-INSTALL-TERMINAL-IMAGE.md`, which may invoke RINC's bundled `sd-cli.exe` when UI image generation fails or times out.
 
 ## 10. Post-Installation Verification
 
@@ -255,6 +255,21 @@ rinc ui <model>
 ```
 
 The assistant should report success only when the installed RINC command works and the applicable diagnostics pass.
+
+## 10A. Windows Terminal Image Fallback
+
+If Windows UI chat works but UI image generation fails or times out, especially on a slower CPU-only system, the AI assistant may use the approved terminal image fallback documented in `WINDOWS-INSTALL-TERMINAL-IMAGE.md`.
+
+First verify:
+
+```text
+rinc hardware
+rinc doctor
+```
+
+If the image runtime is present, guide the user through the documented bundled `sd-cli.exe` sample command. If terminal image generation succeeds while the UI path fails, report the core image runtime as healthy and the UI/job orchestration path as the likely failure layer.
+
+Do not replace bundled runtime files or install an unrelated stable-diffusion.cpp runtime.
 
 ## 11. Failure Handling
 
