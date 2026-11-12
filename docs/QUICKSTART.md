@@ -89,6 +89,12 @@ Launch the local workstation:
 rinc ui <model>
 ```
 
+## Terminal Image Fallback
+
+If UI image generation fails or times out on a slower CPU-only Windows system, use the approved bundled-runtime fallback in `WINDOWS-INSTALL-TERMINAL-IMAGE.md`.
+
+The guide includes both PowerShell and CMD commands and saves the sample image to the user's Downloads folder.
+
 ## Important
 
 Normal users should not clone the repository, build RINC from source, or install separate developer runtimes.
