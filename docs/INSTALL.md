@@ -123,6 +123,8 @@ rinc doctor
 
 ## Windows Installation
 
+For complete PowerShell and Command Prompt commands, local-model registration, and the documented terminal image fallback, see `WINDOWS-INSTALL-TERMINAL-IMAGE.md`.
+
 1. Confirm Windows is x64.
 2. Download the official Setup EXE and matching checksum.
 3. Verify SHA-256.
