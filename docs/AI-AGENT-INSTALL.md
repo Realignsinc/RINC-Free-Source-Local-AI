@@ -2,77 +2,30 @@
 
 Developed by **Realigns Inc.**
 
-This guide defines the supported way for an AI assistant to help a normal user install RINC 1.0.0 from the official GitHub Release.
+This guide is written for AI assistants helping a normal user install and operate the official RINC 1.0.0 release. It is documentation only. It does not provide or expose RINC proprietary application source code.
 
-The public GitHub repository is an **installer and product-information repository**. It is not a source-code installation path.
+## 1. User Request Pattern
 
-## 1. One-Link User Experience
-
-A user may provide only this repository link:
+A user may give an AI assistant only this repository URL:
 
 ```text
 https://github.com/Realignsinc/RINC-Free-Source-Local-AI
 ```
 
-and ask:
+and say:
 
 > Help me install RINC 1.0.0 on this computer from the official GitHub release.
 
-From that point, the AI assistant should manage the supported installation workflow step by step.
+The assistant should use the official release assets and this documentation.
 
-The assistant should:
+## 2. Supported Public Targets
 
-1. determine the operating system and CPU architecture
-2. confirm the platform is supported
-3. review the applicable RINC license requirements
-4. locate the official RINC 1.0.0 GitHub Release
-5. select the correct installer asset
-6. download it when the assistant has authorized browser/computer access, otherwise tell the user exactly which file to download
-7. obtain the matching published `.sha256` file
-8. verify the installer SHA-256
-9. guide or perform the normal installation
-10. open a new Terminal or PowerShell session when required
-11. run:
-    ```text
-    rinc --version
-    rinc hardware
-    rinc doctor
-    ```
-12. help launch RINC and confirm the installed application starts successfully
+RINC 1.0.0 public targets:
 
-If the assistant cannot directly control the computer, it should give **one clear step at a time**, ask the user for the result, and continue from that result.
+- **macOS Apple Silicon / ARM64** — recommended Metal release
+- **Windows x64** — beta/testing release
 
-## 2. Installer-Only Rule
-
-For a normal RINC 1.0.0 installation, the AI assistant must use the official installer assets from **GitHub Releases**.
-
-The assistant must **not**:
-
-- clone the repository as an installation method
-- search for or request RINC proprietary source code
-- build RINC from source
-- invent an installer
-- reconstruct internal RINC runtime components
-- substitute development files for a release installer
-- direct the user to install internal development dependencies
-- expose or reverse-map protected RINC implementation details
-
-If the required official installer asset is not available, stop and clearly report:
-
-```text
-The official RINC installer for this platform is not currently available in GitHub Releases.
-```
-
-Do not substitute another installation method.
-
-## 3. Supported Platforms
-
-RINC 1.0.0 official release targets:
-
-- **macOS Apple Silicon / ARM64**
-- **Windows x64**
-
-Unsupported RINC 1.0.0 public release targets include:
+Not official RINC 1.0.0 public targets:
 
 - Intel/x64 macOS
 - Linux
@@ -85,224 +38,222 @@ Before downloading anything, determine:
 - available RAM
 - available storage
 
-If the machine is unsupported, stop and explain that the current RINC 1.0.0 public release does not support that platform.
+## 3. Official Asset Selection
 
-## 4. Official Installer Selection
+### macOS Apple Silicon / ARM64
 
-Use this deterministic selection:
-
-```text
-IF macOS AND Apple Silicon / ARM64:
-    installer = RINC-1.0.0-macos-arm64.pkg
-    checksum  = RINC-1.0.0-macos-arm64.pkg.sha256
-
-ELSE IF Windows AND x64:
-    installer = RINC-1.0.0-windows-x64-Setup.exe
-    checksum  = RINC-1.0.0-windows-x64-Setup.exe.sha256
-
-ELSE:
-    STOP
-    unsupported platform
-```
-
-Use only the assets attached to the official RINC GitHub Release.
-
-## 5. License Check
-
-Before installation, review:
-
-- `LICENSE`
-- `COMMERCIAL-LICENSE.md`
-- `TRADEMARKS.md`
-- `THIRD-PARTY-NOTICES.md`
-
-An AI assistant cannot grant commercial permission.
-
-If the user describes company use, employer use, paid client work, consulting, commercial training, managed institutional deployment, redistribution, paid API/service use, or another commercially advantageous use, the assistant must not represent that use as covered by a personal/non-commercial license.
-
-Commercial licensing:
+Preferred release assets:
 
 ```text
-sales@rinc.pk
+RINC-1.0.0-macOS-AppleSilicon-Metal.dmg
+RINC-1.0.0-macOS-AppleSilicon-Metal.dmg.sha256
 ```
 
-## 6. Integrity Verification
+### Windows x64
 
-Always verify the installer when a matching SHA-256 file is published.
-
-### macOS
-
-From Terminal:
-
-```bash
-shasum -a 256 RINC-1.0.0-macos-arm64.pkg
-```
-
-Compare the result with:
+Beta/testing assets:
 
 ```text
-RINC-1.0.0-macos-arm64.pkg.sha256
-```
-
-### Windows
-
-From PowerShell:
-
-```powershell
-Get-FileHash .\RINC-1.0.0-windows-x64-Setup.exe -Algorithm SHA256
-```
-
-Compare the result with:
-
-```text
+RINC-1.0.0-windows-x64-Setup.exe
 RINC-1.0.0-windows-x64-Setup.exe.sha256
 ```
 
-If the checksum does not match:
+Do not substitute development folders, repository files, unofficial mirrors or reconstructed runtime files.
 
-- stop
-- do not run the installer
-- delete the mismatched download
-- download the official installer again
-- report the mismatch to the user
+## 4. macOS Apple Silicon Installation
 
-## 7. macOS Apple Silicon Installation
+### Confirm architecture
 
-For a supported Apple Silicon Mac:
-
-1. download `RINC-1.0.0-macos-arm64.pkg`
-2. download its matching `.sha256` file
-3. verify SHA-256
-4. open the `.pkg`
-5. complete the normal macOS installer
-6. do not broadly disable macOS security protections
-7. open a new Terminal
-8. run:
+Ask the user to run:
 
 ```bash
+uname -m
+```
+
+Expected:
+
+```text
+arm64
+```
+
+### Verify the DMG
+
+From the folder containing the DMG and checksum:
+
+```bash
+shasum -a 256 -c RINC-1.0.0-macOS-AppleSilicon-Metal.dmg.sha256
+```
+
+Expected:
+
+```text
+RINC-1.0.0-macOS-AppleSilicon-Metal.dmg: OK
+```
+
+If verification fails, stop.
+
+### Mount the DMG
+
+```bash
+open RINC-1.0.0-macOS-AppleSilicon-Metal.dmg
+```
+
+### Copy the full RINC distribution
+
+The mounted image contains a `RINC-1.0.0` folder.
+
+The user should copy that entire folder to:
+
+```text
+~/Applications/RINC-1.0.0
+```
+
+Keep the packaged directory structure intact.
+
+### Verify the packaged launcher
+
+```bash
+"$HOME/Applications/RINC-1.0.0/launcher/rinc" --version
+"$HOME/Applications/RINC-1.0.0/launcher/rinc" hardware
+"$HOME/Applications/RINC-1.0.0/launcher/rinc" doctor
+```
+
+### Expose the terminal command
+
+RINC is terminal-first. The installed package should be used as the terminal command target.
+
+Follow the documented user-local command setup in [MACOS-APPLE-SILICON-METAL.md](MACOS-APPLE-SILICON-METAL.md).
+
+Do not link the public installation to a development checkout.
+
+## 5. Post-Installation Diagnostics
+
+Verify:
+
+```text
 rinc --version
 rinc hardware
 rinc doctor
+rinc runtime status
 ```
 
-If macOS displays a publisher/signing/security warning, follow only the current instructions associated with that exact official release. Do not invent a broad security bypass.
+An assistant should not call installation successful until the applicable diagnostics pass.
 
-## 8. Windows x64 Installation
+## 6. Model Workflow
 
-For a supported Windows x64 machine:
-
-1. download `RINC-1.0.0-windows-x64-Setup.exe`
-2. download `RINC-1.0.0-windows-x64-Setup.exe.sha256`
-3. verify SHA-256 in PowerShell
-4. run the Setup EXE
-5. follow the normal installer prompts
-6. do not broadly weaken Windows security or PowerShell policy
-7. when installation completes, close and reopen PowerShell
-8. run:
-
-```powershell
-rinc --version
-rinc hardware
-rinc doctor
-```
-
-The normal Windows application location is:
-
-```text
-%LOCALAPPDATA%\Programs\RINC
-```
-
-Persistent user data is stored separately under:
-
-```text
-%USERPROFILE%\.rinc
-```
-
-## 9. No Separate Runtime Installation
-
-A normal user installing an official RINC package should not be instructed to separately install:
-
-- Node.js
-- npm
-- NVM
-- Python
-- llama.cpp
-- stable-diffusion.cpp
-- internal RINC runtime binaries
-- build systems
-- compiler toolchains
-
-unless current official RINC documentation explicitly requires something for that exact release.
-
-Use documented RINC commands for normal operation. The explicit exception is the approved Windows terminal image fallback in `WINDOWS-INSTALL-TERMINAL-IMAGE.md`, which may invoke RINC's bundled `sd-cli.exe` when UI image generation fails or times out.
-
-## 10. Post-Installation Verification
-
-The installation is not complete until these checks succeed:
-
-```text
-rinc --version
-rinc hardware
-rinc doctor
-```
-
-Then useful next commands include:
+List models:
 
 ```text
 rinc model list
-rinc chat <model>
-rinc ui <model>
 ```
 
-The assistant should report success only when the installed RINC command works and the applicable diagnostics pass.
-
-## 10A. Windows Terminal Image Fallback
-
-If Windows UI chat works but UI image generation fails or times out, especially on a slower CPU-only system, the AI assistant may use the approved terminal image fallback documented in `WINDOWS-INSTALL-TERMINAL-IMAGE.md`.
-
-First verify:
+Add a compatible local GGUF model when needed:
 
 ```text
-rinc hardware
-rinc doctor
+rinc model add /path/to/model.gguf
+rinc model list
+rinc model info <registered-model-name>
+rinc model fit <registered-model-name>
 ```
 
-If the image runtime is present, guide the user through the documented bundled `sd-cli.exe` sample command. If terminal image generation succeeds while the UI path fails, report the core image runtime as healthy and the UI/job orchestration path as the likely failure layer.
+Do not claim every model will fit every machine. Model size, quantization, context and available RAM matter.
 
-Do not replace bundled runtime files or install an unrelated stable-diffusion.cpp runtime.
+Third-party model licenses are independent of the RINC software license.
 
-## 11. Failure Handling
+## 7. Chat from Terminal
 
-If installation fails:
+Start local terminal chat:
 
-1. confirm the installer came from the official GitHub Release
-2. confirm the correct platform installer was selected
-3. verify SHA-256 again
-4. confirm sufficient disk space
-5. confirm the installation was not interrupted
-6. reopen Terminal or PowerShell
-7. run `rinc --version` and `rinc doctor` if available
-8. consult `TROUBLESHOOTING.md`
-9. report the exact visible error
-10. contact Realigns Inc. support if unresolved
+```text
+rinc chat <registered-model-name>
+```
 
-Do not modify protected RINC runtime resources or reverse-engineer the application as a troubleshooting method.
+Example:
 
-## 12. Success Condition
+```text
+rinc chat Llama-3.2-1B-Instruct-Q4_K_M.gguf
+```
 
-AI-assisted installation is complete only when:
+## 8. Chat from the RINC Workstation UI
 
-- the intended use complies with the applicable license
-- the machine is on a supported platform
-- the official GitHub Release installer was used
+Launch the local workstation:
+
+```text
+rinc ui <registered-model-name>
+```
+
+Example:
+
+```text
+rinc ui Llama-3.2-1B-Instruct-Q4_K_M.gguf
+```
+
+RINC manages the local runtime and dynamically allocates the localhost service port.
+
+The assistant should not instruct the user to hard-code a localhost port.
+
+## 9. RINC 1.0.0 Capabilities
+
+Publicly documented capabilities include:
+
+- local AI chat
+- terminal-first `rinc` CLI
+- localhost workstation UI
+- hardware detection and model-fit preflight
+- Apple Silicon Metal acceleration in the macOS ARM64 release
+- compatible GGUF model management
+- RINC Programming Engine coding workflows
+- deterministic mathematics and physics support through the RINC Engine Box
+- document reading and OCR
+- multimodal/VLM workflows with compatible model/projector combinations
+- local image generation
+- multilingual model workflows
+- local-first processing and user-controlled model files
+
+See [TECHNICAL-OVERVIEW.md](TECHNICAL-OVERVIEW.md).
+
+## 10. Preserve User Data
+
+Persistent RINC data is separate from the packaged application.
+
+Do not remove `~/.rinc` during normal reinstall or update unless the user explicitly requests deletion of their local RINC data.
+
+## 11. Security and Safety Boundaries
+
+The AI assistant must not:
+
+- request proprietary RINC source code
+- reconstruct private runtime internals
+- replace packaged runtime binaries
+- disable operating-system security globally
+- invent unsupported installation methods
+- claim NVIDIA certification or endorsement
+- claim unsupported hardware has been physically validated
+
+If macOS or Windows displays a security warning, use only guidance associated with the official release.
+
+## 12. Windows x64 Beta
+
+For Windows x64 installation, use:
+
+- `RINC-1.0.0-windows-x64-Setup.exe`
+- its matching `.sha256`
+
+See [WINDOWS-INSTALL-TERMINAL-IMAGE.md](WINDOWS-INSTALL-TERMINAL-IMAGE.md).
+
+Windows ARM is not a RINC 1.0.0 release target.
+
+## 13. Success Condition
+
+Installation is complete only when:
+
+- the correct official asset was selected
 - SHA-256 verification passed
-- installation completed
+- the package was installed/copied correctly
 - `rinc --version` works
 - `rinc hardware` works
-- `rinc doctor` passes its applicable checks
-- RINC can be launched
-
-Otherwise report installation as incomplete.
+- `rinc doctor` passes applicable checks
+- at least one intended RINC interaction path can be started
 
 ## Support
 
