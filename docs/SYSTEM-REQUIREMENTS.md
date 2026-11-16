@@ -2,16 +2,16 @@
 
 Official release notes are the final authority for supported platforms and minimum requirements.
 
-## Official RINC 1.0.0 Release Targets
+## Official RINC 1.0.0 Public Targets
 
-RINC 1.0.0 official release support is targeted to:
+- **macOS Apple Silicon / ARM64** — recommended Metal release
+- **Windows x64** — beta/testing release
 
-- **macOS Apple Silicon (ARM64)**
-- **Windows x64**
+Not official RINC 1.0.0 public targets:
 
-Linux and Intel/x64 macOS are not official RINC 1.0.0 release targets.
-
-Do not substitute an unsupported build or assume that internal development/runtime code implies public platform support.
+- Intel/x64 macOS
+- Linux
+- Windows ARM
 
 ## General Minimum Target
 
@@ -22,97 +22,106 @@ For supported RINC 1.0.0 releases:
 - sufficient storage for RINC and selected models
 - supported CPU architecture
 
-More memory is recommended for larger language models, image generation, concurrent workloads, and higher-compute tasks.
+More memory is recommended for larger language models, multimodal workflows, image generation, longer context and concurrent workloads.
 
-## macOS
+## macOS Apple Silicon
 
-Supported RINC 1.0.0 target:
+Target:
 
-- Apple Silicon / ARM64 Mac
+- Apple Silicon / ARM64
+- M-series Mac
 - approximately 4 GB RAM or more
-- sufficient free storage for the application, models, and generated outputs
+- sufficient storage for the RINC distribution, local models and generated outputs
 
-Intel/x64 Mac is not an official RINC 1.0.0 release target.
+The current Apple Silicon Metal release has been live-tested by Realigns Inc. on:
 
-## Windows
+- **Apple M1**
+- **8 GB RAM**
 
-Supported RINC 1.0.0 target:
+The ARM64 package is intended for Apple Silicon M-series systems, but Realigns Inc. does not claim physical testing on every M-series model or configuration.
 
-- 64-bit Windows on x64 architecture
+## Apple Metal
+
+The macOS ARM64 release includes the RINC-managed local runtime configured for Apple Silicon Metal acceleration where supported by the packaged runtime and selected workload.
+
+Practical acceleration depends on:
+
+- Mac model
+- available unified memory
+- model size and quantization
+- context size
+- workload type
+- current memory pressure
+
+## Windows x64
+
+Target:
+
+- 64-bit Windows
+- x64 CPU architecture
 - approximately 4 GB RAM or more
-- sufficient free storage for the application, models, and generated outputs
+- sufficient storage
 
-ARM Windows is not an official RINC 1.0.0 release target.
+The published Windows x64 release is currently beta/testing.
 
-## Hardware Capability
+Windows ARM is not supported by the RINC 1.0.0 public release.
 
-Practical workload capability depends on:
+## Hardware-Aware Operation
 
-- available RAM
-- CPU capability
-- available hardware acceleration
-- model size
-- quantization
-- image workload size
-- document workload size
-- concurrent workload pressure
-
-Meeting the minimum target does not mean every model or workload will fit the machine.
-
-## Model Size
-
-RINC does not assume that every model is appropriate for every computer.
-
-Larger models generally require more memory and compute resources.
-
-Use:
+RINC includes user-facing hardware/model preflight commands:
 
 ```text
 rinc hardware
-rinc model fit <name>
+rinc model fit <registered-model-name>
+rinc doctor
+rinc runtime status
 ```
 
-to inspect the machine and evaluate a registered model where supported.
+Meeting minimum system requirements does not guarantee that every model or workload will fit.
+
+## Model Size
+
+Larger models generally require more memory and compute resources.
+
+RINC is designed to work with compatible local models that fit the user's available hardware; it does not impose a public artificial model-size ceiling independent of hardware capability.
 
 ## Storage
 
-Users should allow additional storage for:
+Allow storage for:
 
+- the RINC application distribution
 - language models
 - image models
+- OCR/VLM assets
 - documents
 - generated outputs
 - future updates
 
-Available storage requirements vary with the selected models and workloads.
-
 ## Packaged Runtime
 
-Official RINC packages provide the RINC-managed local runtime environment required for normal supported operation.
+Normal users should not need to separately install global development runtimes such as Node.js or Python merely to operate an official packaged RINC release.
 
-Users should not need to separately install global development runtimes such as Node.js or Python merely to operate an official packaged RINC release unless current official documentation explicitly requires them.
+## Post-Installation Verification
 
-## Post-Installation Diagnostics
-
-After installation, run:
+Run:
 
 ```text
 rinc --version
 rinc hardware
 rinc doctor
+rinc runtime status
 ```
-
-A supported installation should be considered healthy only when the applicable diagnostic checks pass.
-
-For installation steps, read:
-
-- `INSTALL.md`
-- `QUICKSTART.md`
-- `AI-AGENT-INSTALL.md`
-
 
 ## Multilingual Model Selection
 
-For practical RAM-based model guidance and recommendations for Thai, Arabic, Urdu, and Roman Urdu, read:
+See:
 
-- `SYSTEM-CONFIG-MULTILINGUAL-MODELS.md`
+- [SYSTEM-CONFIG-MULTILINGUAL-MODELS.md](SYSTEM-CONFIG-MULTILINGUAL-MODELS.md)
+
+## Installation
+
+See:
+
+- [INSTALL.md](INSTALL.md)
+- [MACOS-APPLE-SILICON-METAL.md](MACOS-APPLE-SILICON-METAL.md)
+- [AI-AGENT-INSTALL.md](AI-AGENT-INSTALL.md)
